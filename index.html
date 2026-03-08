@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Question For You...</title>
+    <meta name="description" content="A romantic proposal special website.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="hearts-container"></div>
+    <div class="card glass">
+        <div id="content" class="content-wrapper">
+            <div class="image-container">
+                <img src="https://media.giphy.com/media/c76IJLufpNwSycO46g/giphy.gif" alt="Cute bear" class="main-gif" id="main-scene-img">
+            </div>
+            <h1 class="title">Ashna, will you be mine?</h1>
+            <p class="subtitle">I've been waiting for the perfect moment to ask you this...</p>
+            
+            <div class="buttons">
+                <!-- Wrapper for JS positioning purposes if needed, but flex handles it -->
+                <button id="yes-btn" class="btn yes-btn">Yes, I will! 💖</button>
+                <button id="no-btn" class="btn no-btn">No</button>
+            </div>
+        </div>
+        
+        <div id="success-content" class="content-wrapper hidden">
+            <div class="image-container">
+                <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif" alt="Happy bear" class="main-gif">
+            </div>
+            <h1 class="title success-title">YAYYYYY! 🎉</h1>
+            <p class="subtitle">You just made me the happiest person ever! ❤️</p>
+            <div class="heart-pulse-container">
+                <div class="pulse-heart"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
