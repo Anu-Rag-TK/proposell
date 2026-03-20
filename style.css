@@ -236,6 +236,32 @@ body {
     100% { transform: scale(0.9) rotate(-45deg); }
 }
 
+.emoji-scene {
+    font-size: 7.5rem;
+    filter: drop-shadow(0 10px 15px rgba(255, 77, 109, 0.4));
+    user-select: none;
+    line-height: 1;
+    text-align: center;
+}
+
+.floating-anim {
+    animation: floatAnim 3s ease-in-out infinite;
+}
+
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+.bounce-anim {
+    animation: popBounce 1s cubic-bezier(0.28, 0.84, 0.42, 1) infinite alternate;
+}
+
+@keyframes popBounce {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15) translateY(-10px); }
+}
+
 @media (max-width: 600px) {
     .card {
         padding: 2rem 1.5rem;
