@@ -1,11 +1,3 @@
-    const WEBHOOK_URL = "https://discordapp.com/api/webhooks/1484624481212170461/6Y8HD_P7wlJzM6tH6O9iyV2nwhRTw3HhkcMO22lgpXjaKcfwk_gAJ8FOuXZJQXLxVLo7";
-
-    // 1. Notify that the site was opened!
-    fetch(WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content: "👀 Someone just opened the proposal site!" })
-    }).catch(err => console.error(err));
 document.addEventListener('DOMContentLoaded', () => {
     const yesBtn = document.getElementById('yes-btn');
     const noBtn = document.getElementById('no-btn');
@@ -99,11 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         successContent.classList.remove('hidden');
         
         createHeartExplosion();
-        fetch(WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ content: "💖🎉 SHE SAID YES!!! 🎉💖" })
-        }).catch(err => console.error(err));
     });
 
     const createHeartExplosion = () => {
