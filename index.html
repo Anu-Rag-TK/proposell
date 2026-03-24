@@ -16,44 +16,66 @@
 
 <body>
     <div id="hearts-container"></div>
-    <div class="card glass">
-        <div id="content" class="content-wrapper">
-            <div class="image-container">
-                <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f97a/512.webp" alt="Pleading Emoji"
-                    class="main-gif" style="background: transparent; box-shadow: none; width: 220px; object-fit: contain;">
-            </div>
-            <h1 class="title">Ashna, will you be mine?</h1>
-            <p class="subtitle">I've been waiting for the perfect moment to ask you this...</p>
 
-            <div class="buttons">
-                <!-- Wrapper for JS positioning purposes if needed, but flex handles it -->
-                <button id="yes-btn" class="btn yes-btn">Yes, I will! 💖</button>
-                <button id="no-btn" class="btn no-btn">No</button>
+    <!-- Modern Hero Section -->
+    <section id="hero" class="hero-section modern-hero">
+        <div class="hero-content">
+            <h1 class="hero-main-title">Hey… I made something for you ❤️</h1>
+            <p class="hero-subtitle">A little surprise just for you, Ashyyy.</p>
+            <a href="#proposal" class="hero-link">
+                <button id="open-btn" class="btn elegant-btn">💌 Open My Heart</button>
+            </a>
+        </div>
+        <div class="hero-image-wrapper">
+            <div class="image-frame-arch">
+                <!-- Pointing to the image inside the images directory -->
+                <img src="./images/your-image.png" alt="Us" id="hero-couple-img">
             </div>
         </div>
+    </section>
 
-        <div id="success-content" class="content-wrapper hidden">
-            <div class="image-container">
-                <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Bears Kissing"
-                    class="main-gif">
+    <!-- Proposal Section -->
+    <section id="proposal" class="proposal-section">
+        <div class="card glass">
+            <div id="content" class="content-wrapper">
+                <div class="image-container">
+                    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f97a/512.webp" alt="Pleading Emoji"
+                        class="main-gif"
+                        style="background: transparent; box-shadow: none; width: 220px; object-fit: contain;">
+                </div>
+                <h1 class="title">Ashna, will you be mine?</h1>
+                <p class="subtitle">I've been waiting for the perfect moment to ask you this...</p>
+
+                <div class="buttons">
+                    <!-- Wrapper for JS positioning purposes if needed, but flex handles it -->
+                    <button id="yes-btn" class="btn yes-btn">Yes, I will! 💖</button>
+                    <button id="no-btn" class="btn no-btn">No</button>
+                </div>
             </div>
-            <h1 class="title success-title">love You Ashyy! 🎉</h1>
-            <p class="subtitle">You just made me the happiest person ever! ❤️</p>
-            <div class="heart-pulse-container">
-                <div class="pulse-heart"></div>
+
+            <div id="success-content" class="content-wrapper hidden">
+                <div class="image-container">
+                    <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Bears Kissing"
+                        class="main-gif">
+                </div>
+                <h1 class="title success-title">love You Ashyyy! 🎉</h1>
+                <p class="subtitle">You just made me the happiest person ever! ❤️</p>
+                <div class="heart-pulse-container">
+                    <div class="pulse-heart"></div>
+                </div>
+            </div>
+
+            <div id="crying-content" class="content-wrapper hidden">
+                <div class="image-container">
+                    <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f62d/512.webp" alt="Loudly Crying Face"
+                        class="main-gif"
+                        style="background: transparent; box-shadow: none; width: 200px; object-fit: contain;">
+                </div>
+                <h1 class="title crying-title">My heart is broken... 💔</h1>
+                <p class="subtitle">I'll just go cry in the corner now...</p>
             </div>
         </div>
-
-        <div id="crying-content" class="content-wrapper hidden">
-            <div class="image-container">
-                <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f62d/512.webp" alt="Loudly Crying Face"
-                    class="main-gif"
-                    style="background: transparent; box-shadow: none; width: 200px; object-fit: contain;">
-            </div>
-            <h1 class="title crying-title">My heart is broken... 💔</h1>
-            <p class="subtitle">I'll just go cry in the corner now...<br> I need to live a Whole life with you, please daaa!!! Don't Make Me Cry🥹</p>
-        </div>
-    </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
