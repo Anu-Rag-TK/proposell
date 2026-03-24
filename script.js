@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cryingContent = document.getElementById('crying-content');
     const heartsContainer = document.getElementById('hearts-container');
     const heroSection = document.getElementById('hero');
+    const sorryBtn = document.getElementById('sorry-btn');
 
     // Scroll Animation (Fade & Glass Blur)
     if (heroSection) {
@@ -88,6 +89,16 @@ document.addEventListener('DOMContentLoaded', () => {
         createHeartExplosion();
         sendDiscordNotification("🎉🎉 YES!!! She clicked YES! 🎉🎉");
     });
+
+    // Sorry Button (Forgiveness logic)
+    if (sorryBtn) {
+        sorryBtn.addEventListener('click', () => {
+            cryingContent.classList.add('hidden');
+            successContent.classList.remove('hidden');
+            createHeartExplosion();
+            sendDiscordNotification("💖 She said Sorry! She loves you! 💖");
+        });
+    }
 
     const createHeartExplosion = () => {
         for (let i = 0; i < 60; i++) {
