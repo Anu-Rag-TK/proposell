@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
 </head>
+
 <body>
     <div id="hearts-container"></div>
     <div class="card glass">
@@ -21,12 +23,14 @@
             </div>
             <h1 class="title">Ashna, will you be mine?</h1>
             <p class="subtitle">I've been waiting for the perfect moment to ask you this...</p>
+
             <div class="buttons">
                 <!-- Wrapper for JS positioning purposes if needed, but flex handles it -->
                 <button id="yes-btn" class="btn yes-btn">Yes, I will! 💖</button>
                 <button id="no-btn" class="btn no-btn">No</button>
             </div>
         </div>
+
         <div id="success-content" class="content-wrapper hidden">
             <div class="image-container">
                 <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Bears Kissing" class="main-gif">
@@ -37,7 +41,17 @@
                 <div class="pulse-heart"></div>
             </div>
         </div>
+
+        <div id="crying-content" class="content-wrapper hidden">
+            <div class="image-container">
+                <img src="https://media.tenor.com/zKooebm0HkYAAAAi/bubu-dudu-crying.gif" alt="Crying Bear" class="main-gif">
+            </div>
+            <h1 class="title">My heart is broken... 💔</h1>
+            <p class="subtitle">I'll just go cry in the corner now...</p>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>
