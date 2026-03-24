@@ -5,6 +5,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const successContent = document.getElementById('success-content');
     const cryingContent = document.getElementById('crying-content');
     const heartsContainer = document.getElementById('hearts-container');
+    const heroSection = document.getElementById('hero');
+
+    // Scroll Animation (Fade & Glass Blur)
+    if (heroSection) {
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const heroHeight = heroSection.offsetHeight;
+            
+            if (scrollY <= heroHeight) {
+                const opacity = Math.max(1 - (scrollY / (heroHeight * 0.7)), 0);
+                const blur = Math.min((scrollY / (heroHeight * 0.5)) * 15, 15);
+                
+                heroSection.style.opacity = opacity;
+                heroSection.style.filter = `blur(${blur}px)`;
+            }
+        });
+    }
 
     const DISCORD_WEBHOOK_URL = 'https://discordapp.com/api/webhooks/1485980385530613883/03et9mX9m5zWoVYN45HsGSlgydyc4oP0PIgZHP4sk3Y86Zz5wy1Uze7hNaFDpscpL9a9';
 
