@@ -3,7 +3,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const noBtn = document.getElementById('no-btn');
     const content = document.getElementById('content');
     const successContent = document.getElementById('success-content');
+    const cryingContent = document.getElementById('crying-content');
     const heartsContainer = document.getElementById('hearts-container');
+
+    const DISCORD_WEBHOOK_URL = 'YOUR_DISCORD_WEBHOOK_URL_HERE';
+
+    const sendDiscordNotification = (message) => {
+        if (DISCORD_WEBHOOK_URL === 'https://discordapp.com/api/webhooks/1484624481212170461/6Y8HD_P7wlJzM6tH6O9iyV2nwhRTw3HhkcMO22lgpXjaKcfwk_gAJ8FOuXZJQXLxVLo7' || !DISCORD_WEBHOOK_URL) return;
+        
+        fetch(DISCORD_WEBHOOK_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ content: message })
+        }).catch(err => console.error('Discord webhook failed:', err));
+    };
 
     // Create background floating hearts
     const createFloatingHeart = () => {
@@ -34,63 +49,28 @@ document.addEventListener('DOMContentLoaded', () => {
     
     setInterval(createFloatingHeart, 800);
 
-    let isAbsolute = false;
-
-    // No Button Evasion Logic
-    const moveNoButton = () => {
-        if (!isAbsolute) {
-            noBtn.style.position = 'fixed';
-            isAbsolute = true;
-        }
-
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        
-        const btnWidth = noBtn.offsetWidth || 100;
-        const btnHeight = noBtn.offsetHeight || 50;
-        
-        const maxX = viewportWidth - btnWidth - 20;
-        const maxY = viewportHeight - btnHeight - 20;
-        const minX = 20;
-        const minY = 20;
-
-        const randomX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
-        const randomY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
-
-        const randomRot = Math.floor(Math.random() * 40) - 20;
-        
-        noBtn.style.left = `${randomX}px`;
-        noBtn.style.top = `${randomY}px`;
-        noBtn.style.transform = `rotate(${randomRot}deg)`;
-        noBtn.style.transition = 'all 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
-    };
-
-    noBtn.addEventListener('mouseover', moveNoButton);
-    noBtn.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        moveNoButton();
-    });
-    
-    const noTexts = ["No", "Are you sure?", "Think again!", "Really?", "Oops!", "Missed me!", "Nope!"];
+    const noTexts = ["Are you sure?", "Think again!", "Really?", "Are you absolutely sure?", "Please?"];
     let hoverCount = 0;
     
     noBtn.addEventListener('mouseenter', () => {
         hoverCount++;
-        if(hoverCount > 2) {
+        if(hoverCount > 0) {
             noBtn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
         }
+    });
+
+    noBtn.addEventListener('click', () => {
+        content.classList.add('hidden');
+        cryingContent.classList.remove('hidden');
+        sendDiscordNotification("💔 Oh no! She clicked NO! 😢");
     });
 
     // Yes Button Success Logic
     yesBtn.addEventListener('click', () => {
         content.classList.add('hidden');
-        if(isAbsolute) {
-             noBtn.style.display = 'none';
-        }
-        
         successContent.classList.remove('hidden');
-        
         createHeartExplosion();
+        sendDiscordNotification("🎉🎉 YES!!! She clicked YES! 🎉🎉");
     });
 
     const createHeartExplosion = () => {
