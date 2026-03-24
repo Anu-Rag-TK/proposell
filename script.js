@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cryingContent = document.getElementById('crying-content');
     const heartsContainer = document.getElementById('hearts-container');
 
-    const DISCORD_WEBHOOK_URL = 'YOUR_DISCORD_WEBHOOK_URL_HERE';
+    const DISCORD_WEBHOOK_URL = 'https://discordapp.com/api/webhooks/1484624481212170461/6Y8HD_P7wlJzM6tH6O9iyV2nwhRTw3HhkcMO22lgpXjaKcfwk_gAJ8FOuXZJQXLxVLo7';
 
     const sendDiscordNotification = (message) => {
         if (DISCORD_WEBHOOK_URL === 'https://discordapp.com/api/webhooks/1484624481212170461/6Y8HD_P7wlJzM6tH6O9iyV2nwhRTw3HhkcMO22lgpXjaKcfwk_gAJ8FOuXZJQXLxVLo7' || !DISCORD_WEBHOOK_URL) return;
