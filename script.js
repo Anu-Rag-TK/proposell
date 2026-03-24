@@ -14,11 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const heroHeight = heroSection.offsetHeight;
             
             if (scrollY <= heroHeight) {
-                const opacity = Math.max(1 - (scrollY / (heroHeight * 0.7)), 0);
-                const blur = Math.min((scrollY / (heroHeight * 0.5)) * 15, 15);
+                const opacity = Math.max(1 - (scrollY / (heroHeight * 0.8)), 0);
+                const blur = Math.min((scrollY / (heroHeight * 0.6)) * 20, 20);
                 
                 heroSection.style.opacity = opacity;
                 heroSection.style.filter = `blur(${blur}px)`;
+                heroSection.style.transform = `translateY(${scrollY * 0.2}px)`; /* Parallax effect */
             }
         });
     }
