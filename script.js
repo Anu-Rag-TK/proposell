@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const DISCORD_WEBHOOK_URL = 'https://discordapp.com/api/webhooks/1484624481212170461/6Y8HD_P7wlJzM6tH6O9iyV2nwhRTw3HhkcMO22lgpXjaKcfwk_gAJ8FOuXZJQXLxVLo7';
 
     const sendDiscordNotification = (message) => {
-        if (DISCORD_WEBHOOK_URL === 'https://discordapp.com/api/webhooks/1484624481212170461/6Y8HD_P7wlJzM6tH6O9iyV2nwhRTw3HhkcMO22lgpXjaKcfwk_gAJ8FOuXZJQXLxVLo7' || !DISCORD_WEBHOOK_URL) return;
+        if (DISCORD_WEBHOOK_URL ==='DISCORD_WEBHOOK_URL' || !DISCORD_WEBHOOK_URL) return;
         
         fetch(DISCORD_WEBHOOK_URL, {
             method: 'POST',
