@@ -172,7 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
     noBtn.addEventListener('click', () => {
         // 💔 Switch to SAD music
         if (bgMusic) {
+            console.log("Switching to SAD music: music/sad.m4a");
             bgMusic.src = 'music/sad.m4a';
+            bgMusic.load(); // Explicitly load the new source
             toggleMusic(true);
         }
         content.classList.add('hidden');
@@ -193,7 +195,9 @@ document.addEventListener('DOMContentLoaded', () => {
         sorryBtn.addEventListener('click', () => {
             // 💖 Switch back to ROMANTIC music
             if (bgMusic) {
+                console.log("Switching to ROMANTIC music: music/videoplayback.m4a");
                 bgMusic.src = 'music/videoplayback.m4a';
+                bgMusic.load(); // Explicitly load the new source
                 toggleMusic(true);
             }
             cryingContent.classList.add('hidden');
