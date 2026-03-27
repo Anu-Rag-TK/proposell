@@ -1,4 +1,64 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ───── 🎵 Romantic Background Music ─────
+    const bgMusic      = document.getElementById('bg-music');
+    const musicToggle  = document.getElementById('music-toggle');
+    const musicIcon    = musicToggle ? musicToggle.querySelector('.music-icon')  : null;
+    const musicLabel   = musicToggle ? musicToggle.querySelector('.music-label') : null;
+    let   musicStarted = false;
+    let   musicPlaying = false;
+
+    const startMusic = () => {
+        if (musicStarted) return;
+        musicStarted = true;
+        bgMusic.volume = 0.35;
+        bgMusic.play().then(() => {
+            musicPlaying = true;
+            setMusicUI(true);
+        }).catch(() => { /* autoplay blocked — user must press button */ });
+    };
+
+    const setMusicUI = (playing) => {
+        if (!musicToggle) return;
+        if (playing) {
+            musicToggle.classList.remove('muted');
+            if (musicIcon)  musicIcon.textContent  = '🎵';
+            if (musicLabel) musicLabel.textContent  = 'Music';
+        } else {
+            musicToggle.classList.add('muted');
+            if (musicIcon)  musicIcon.textContent  = '🔇';
+            if (musicLabel) musicLabel.textContent  = 'Muted';
+        }
+    };
+
+    if (musicToggle) {
+        musicToggle.addEventListener('click', () => {
+            if (!musicStarted) {
+                startMusic();
+                return;
+            }
+            if (musicPlaying) {
+                bgMusic.pause();
+                musicPlaying = false;
+                setMusicUI(false);
+            } else {
+                bgMusic.play();
+                musicPlaying = true;
+                setMusicUI(true);
+            }
+        });
+    }
+
+    // Auto-start on first interaction anywhere on the page
+    const onFirstInteraction = () => {
+        startMusic();
+        document.removeEventListener('click',     onFirstInteraction);
+        document.removeEventListener('touchstart', onFirstInteraction);
+        document.removeEventListener('keydown',    onFirstInteraction);
+    };
+    document.addEventListener('click',     onFirstInteraction);
+    document.addEventListener('touchstart', onFirstInteraction);
+    document.addEventListener('keydown',    onFirstInteraction);
+    // ─────────────────────────────────────────
     const yesBtn = document.getElementById('yes-btn');
     const noBtn = document.getElementById('no-btn');
     const content = document.getElementById('content');
