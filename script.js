@@ -8,6 +8,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSection = document.getElementById('hero');
     const sorryBtn = document.getElementById('sorry-btn');
 
+    // Scroll modal
+    const openScrollBtn = document.getElementById('open-scroll-btn');
+    const scrollTrigger = document.getElementById('scroll-trigger');
+    const scrollModal = document.getElementById('scroll-modal');
+    const closeScrollBtn = document.getElementById('close-scroll-btn');
+    const scrollBackdrop = document.getElementById('scroll-backdrop');
+    const scrollContainer = document.getElementById('scroll-container');
+
+    const openScroll = () => {
+        scrollModal.classList.remove('hidden');
+        sendDiscordNotification("📜 She opened the scroll and is reading your letter! 💌");
+        // Re-trigger animation
+        scrollContainer.style.animation = 'none';
+        requestAnimationFrame(() => {
+            scrollContainer.style.animation = 'scrollUnroll 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards';
+        });
+    };
+
+    const closeScroll = () => {
+        scrollModal.classList.add('hidden');
+    };
+
+    if (openScrollBtn) openScrollBtn.addEventListener('click', openScroll);
+    if (scrollTrigger) scrollTrigger.addEventListener('click', (e) => {
+        if (e.target === scrollTrigger || e.target.classList.contains('scroll-body-preview') || e.target.classList.contains('scroll-preview-icon') || e.target.classList.contains('scroll-preview-hint')) {
+            openScroll();
+        }
+    });
+    if (closeScrollBtn) closeScrollBtn.addEventListener('click', closeScroll);
+    if (scrollBackdrop) scrollBackdrop.addEventListener('click', closeScroll);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeScroll(); });
+
     // Scroll Animation (Fade & Glass Blur)
     if (heroSection) {
         window.addEventListener('scroll', () => {
