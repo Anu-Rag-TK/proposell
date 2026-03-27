@@ -170,6 +170,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     noBtn.addEventListener('click', () => {
+        // 💔 Switch to SAD music
+        if (bgMusic) {
+            bgMusic.src = 'music/sad.m4a';
+            toggleMusic(true);
+        }
         content.classList.add('hidden');
         cryingContent.classList.remove('hidden');
         sendDiscordNotification("💔 Oh no! She clicked NO! 😢");
@@ -186,6 +191,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sorry Button (Forgiveness logic)
     if (sorryBtn) {
         sorryBtn.addEventListener('click', () => {
+            // 💖 Switch back to ROMANTIC music
+            if (bgMusic) {
+                bgMusic.src = 'music/videoplayback.m4a';
+                toggleMusic(true);
+            }
             cryingContent.classList.add('hidden');
             successContent.classList.remove('hidden');
             createHeartExplosion();
