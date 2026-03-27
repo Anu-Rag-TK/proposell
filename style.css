@@ -106,7 +106,7 @@ body {
     border-color: rgba(255, 255, 255, 0.9);
 }
 
-/* 🌙 Gorgeous Arch Image Frame */
+/* 📜 Romantic Scroll Preview */
 .hero-image-wrapper {
     flex: 1;
     display: flex;
@@ -115,37 +115,267 @@ body {
     animation: fadeIn 2s ease-out;
 }
 
-.image-frame-arch {
-    width: 100%;
-    max-width: 600px;
-    height: 500px;
-    border-radius: 300px 300px 20px 20px;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 50px rgba(255, 105, 180, 0.2);
-    border: 8px solid rgba(255, 255, 255, 0.3);
+.scroll-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
+    animation: floatAnim 4s ease-in-out infinite;
+    filter: drop-shadow(0 20px 40px rgba(255, 105, 180, 0.4));
+    transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.scroll-preview:hover {
+    filter: drop-shadow(0 25px 50px rgba(255, 105, 180, 0.7));
+    transform: scale(1.03);
+}
+
+.scroll-roll {
+    width: 220px;
+    height: 28px;
+    background: linear-gradient(135deg, #c9a96e 0%, #e8d5a3 40%, #d4b06a 70%, #b8860b 100%);
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35), inset 0 2px 4px rgba(255,255,255,0.4), inset 0 -2px 4px rgba(0,0,0,0.2);
     position: relative;
-    transform: rotate(2deg);
-    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.8s ease;
-    backdrop-filter: blur(5px); /* subtle glass effect on image container */
+    z-index: 2;
 }
 
-.image-frame-arch:hover {
-    transform: rotate(0deg) scale(1.02);
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 0 70px rgba(255, 105, 180, 0.4);
-    border-color: rgba(255, 255, 255, 0.5);
+.scroll-roll::before {
+    content: '';
+    position: absolute;
+    left: 8px; right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 6px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 3px;
 }
 
-#hero-couple-img {
+.scroll-body-preview {
+    width: 200px;
+    min-height: 120px;
+    background: linear-gradient(160deg, #fdf6e3 0%, #fcebd0 50%, #f9e4c0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-left: 3px solid rgba(180, 130, 50, 0.4);
+    border-right: 3px solid rgba(180, 130, 50, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.scroll-preview-icon {
+    font-size: 3.5rem;
+    animation: pulse-icon 2s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.scroll-preview-hint {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: #7a5c2e;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.open-scroll-btn {
+    margin-top: 1.2rem;
+    background: linear-gradient(135deg, #ff4d6d 0%, #c9184a 100%);
+    color: #fff;
+    border: none;
+    padding: 0.85rem 2.2rem;
+    font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.5);
+    transition: all 0.3s ease;
+    animation: fadeInUp 1.5s ease-out 0.6s backwards;
+}
+
+.open-scroll-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 77, 109, 0.7);
+}
+
+/* 📜 Full Scroll Modal */
+.scroll-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.scroll-modal.hidden {
+    display: none !important;
+}
+
+.scroll-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 4, 8, 0.88);
+    cursor: pointer;
+}
+
+.scroll-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: scrollUnroll 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    max-height: 90vh;
+}
+
+@keyframes scrollUnroll {
+    from { transform: scaleY(0.05); opacity: 0; }
+    to   { transform: scaleY(1); opacity: 1; }
+}
+
+.scroll-top-rod,
+.scroll-bottom-rod {
+    width: min(500px, 90vw);
+    height: 32px;
+    background: linear-gradient(135deg, #b8860b 0%, #e8d5a3 40%, #c9a96e 70%, #8b6914 100%);
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.5), inset 0 3px 6px rgba(255,255,255,0.5), inset 0 -3px 6px rgba(0,0,0,0.3);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 3;
+}
+
+.scroll-top-rod::after,
+.scroll-bottom-rod::after {
+    content: '';
+    position: absolute;
+    left: 12px; right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 8px;
+    background: rgba(255,255,255,0.35);
+    border-radius: 4px;
+}
+
+.scroll-parchment {
+    width: min(500px, 90vw);
+    max-height: calc(90vh - 120px);
+    overflow-y: auto;
+    background: linear-gradient(160deg, #fdf6e3 0%, #fcebd0 50%, #f9e4c0 100%);
+    border-left: 6px solid rgba(180, 130, 50, 0.5);
+    border-right: 6px solid rgba(180, 130, 50, 0.5);
+
+    position: relative;
+    z-index: 2;
+}
+
+.scroll-parchment::-webkit-scrollbar {
+    width: 5px;
+}
+.scroll-parchment::-webkit-scrollbar-thumb {
+    background: rgba(180, 130, 50, 0.5);
+    border-radius: 4px;
+}
+
+.scroll-inner-content {
+    padding: 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.scroll-ornament {
+    font-size: 2rem;
+    color: #b8860b;
+    line-height: 1;
+}
+
+.scroll-heading {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #7a3c1e;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(180, 80, 30, 0.2);
+    line-height: 1.3;
+}
+
+.scroll-divider {
+    color: #c9a96e;
+    font-size: 1rem;
+    letter-spacing: 0.5rem;
+    text-align: center;
+}
+
+.scroll-text {
+    font-size: 1.05rem;
+    color: #4a2c0a;
+    line-height: 1.9;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    background: rgba(255, 230, 180, 0.3);
+    border-left: 3px solid rgba(200, 150, 60, 0.5);
+    padding: 0.8rem 1.2rem;
+    border-radius: 0 8px 8px 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 38% 20%; /* Shifted left to keep her visible */
-    filter: brightness(1.05) contrast(1.05);
-    transition: transform 10s ease;
+    box-sizing: border-box;
 }
 
-.image-frame-arch:hover #hero-couple-img {
-    transform: scale(1.05); /* slow zoom on hover */
+
+.scroll-text em {
+    color: #8b3a0a;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.scroll-cta {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    color: #c9184a;
+    text-align: center;
+    animation: pulse-icon 2s ease-in-out infinite;
+    font-weight: 700;
+}
+
+.close-scroll-btn {
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #fff;
+    padding: 0.65rem 2rem;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 3;
+}
+
+.close-scroll-btn:hover {
+    background: rgba(255, 77, 109, 0.3);
+    border-color: rgba(255, 77, 109, 0.6);
+    transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+    .scroll-preview { transform: scale(0.9); }
+}
+@media (max-width: 600px) {
+    .scroll-inner-content { padding: 1.5rem 1.2rem; }
+    .scroll-heading { font-size: 1.5rem; }
+    .scroll-text { font-size: 0.95rem; }
 }
 
 /* Animations */
