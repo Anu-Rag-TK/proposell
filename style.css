@@ -62,7 +62,7 @@ body {
     font-family: 'Dancing Script', cursive;
     font-size: 4.8rem;
     color: #ffffff;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 40px rgba(255, 105, 180, 0.5);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 105, 180, 0.5);
     line-height: 1.2;
     margin-bottom: 1rem;
     animation: fadeInDown 1.5s ease-out;
@@ -76,42 +76,24 @@ body {
     max-width: 450px;
     line-height: 1.6;
     animation: fadeInUp 1.5s ease-out 0.3s backwards;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .hero-link {
     text-decoration: none;
 }
 
-/* Elegant Glowing Button */
-.elegant-btn {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: #fff;
-    padding: 1.2rem 3.5rem;
-    font-size: 1.35rem;
-    border-radius: 50px;
-    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.2);
-    transition: all 0.4s ease;
-    animation: fadeInUp 1.5s ease-out 0.6s backwards;
-    cursor: pointer;
-}
 
-.elegant-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.4);
-    border-color: rgba(255, 255, 255, 0.9);
-}
+
 
 /* 📜 Romantic Scroll Preview */
 .hero-image-wrapper {
     flex: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 2.5rem;
     animation: fadeIn 2s ease-out;
 }
 
@@ -131,12 +113,92 @@ body {
     transform: scale(1.03);
 }
 
+/* 🌹 Romantic Arch Photo */
+.arch-photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    position: relative;
+    animation: fadeInUp 1.8s ease-out 0.4s backwards;
+}
+
+.arch-rose-left,
+.arch-rose-right {
+    position: absolute;
+    top: -18px;
+    font-size: 2rem;
+    z-index: 4;
+    filter: drop-shadow(0 4px 8px rgba(255, 50, 100, 0.5));
+    animation: floatAnim 3s ease-in-out infinite;
+}
+
+.arch-rose-left  { left: -10px; animation-delay: 0s; }
+.arch-rose-right { right: -10px; animation-delay: 0.8s; }
+
+.image-frame-arch {
+    width: 220px;
+    height: 300px;
+    border-radius: 110px 110px 16px 16px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 4px rgba(255, 105, 180, 0.5),
+        0 0 0 8px rgba(255, 182, 213, 0.25),
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(255, 105, 180, 0.3);
+    border: 3px solid rgba(255, 200, 220, 0.6);
+    position: relative;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.8s ease;
+}
+
+.image-frame-arch:hover {
+    transform: scale(1.04);
+    box-shadow:
+        0 0 0 4px rgba(255, 105, 180, 0.8),
+        0 0 0 10px rgba(255, 182, 213, 0.3),
+        0 30px 60px rgba(0, 0, 0, 0.55),
+        0 0 60px rgba(255, 105, 180, 0.5);
+}
+
+#hero-couple-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 38% 20%;
+    filter: brightness(1.05) contrast(1.05) saturate(1.1);
+    transition: transform 10s ease;
+}
+
+.image-frame-arch:hover #hero-couple-img {
+    transform: scale(1.06);
+}
+
+.arch-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 55%,
+        rgba(255, 60, 120, 0.18) 100%
+    );
+    pointer-events: none;
+}
+
+.arch-caption {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: #ffb3c1;
+    text-shadow: 0 2px 10px rgba(255, 77, 109, 0.5);
+    animation: pulse-icon 2.5s ease-in-out infinite;
+    letter-spacing: 0.05em;
+}
+
 .scroll-roll {
     width: 220px;
     height: 28px;
     background: linear-gradient(135deg, #c9a96e 0%, #e8d5a3 40%, #d4b06a 70%, #b8860b 100%);
     border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.35), inset 0 2px 4px rgba(255,255,255,0.4), inset 0 -2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
     position: relative;
     z-index: 2;
 }
@@ -144,11 +206,12 @@ body {
 .scroll-roll::before {
     content: '';
     position: absolute;
-    left: 8px; right: 8px;
+    left: 8px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
     height: 6px;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 3px;
 }
 
@@ -173,8 +236,15 @@ body {
 }
 
 @keyframes pulse-icon {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.15); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
 }
 
 .scroll-preview-hint {
@@ -239,8 +309,15 @@ body {
 }
 
 @keyframes scrollUnroll {
-    from { transform: scaleY(0.05); opacity: 0; }
-    to   { transform: scaleY(1); opacity: 1; }
+    from {
+        transform: scaleY(0.05);
+        opacity: 0;
+    }
+
+    to {
+        transform: scaleY(1);
+        opacity: 1;
+    }
 }
 
 .scroll-top-rod,
@@ -249,7 +326,7 @@ body {
     height: 32px;
     background: linear-gradient(135deg, #b8860b 0%, #e8d5a3 40%, #c9a96e 70%, #8b6914 100%);
     border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.5), inset 0 3px 6px rgba(255,255,255,0.5), inset 0 -3px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), inset 0 3px 6px rgba(255, 255, 255, 0.5), inset 0 -3px 6px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
     position: relative;
     z-index: 3;
@@ -259,11 +336,12 @@ body {
 .scroll-bottom-rod::after {
     content: '';
     position: absolute;
-    left: 12px; right: 12px;
+    left: 12px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     height: 8px;
-    background: rgba(255,255,255,0.35);
+    background: rgba(255, 255, 255, 0.35);
     border-radius: 4px;
 }
 
@@ -282,6 +360,7 @@ body {
 .scroll-parchment::-webkit-scrollbar {
     width: 5px;
 }
+
 .scroll-parchment::-webkit-scrollbar-thumb {
     background: rgba(180, 130, 50, 0.5);
     border-radius: 4px;
@@ -370,26 +449,60 @@ body {
 }
 
 @media (max-width: 900px) {
-    .scroll-preview { transform: scale(0.9); }
+    .scroll-preview {
+        transform: scale(0.9);
+    }
 }
+
 @media (max-width: 600px) {
-    .scroll-inner-content { padding: 1.5rem 1.2rem; }
-    .scroll-heading { font-size: 1.5rem; }
-    .scroll-text { font-size: 0.95rem; }
+    .scroll-inner-content {
+        padding: 1.5rem 1.2rem;
+    }
+
+    .scroll-heading {
+        font-size: 1.5rem;
+    }
+
+    .scroll-text {
+        font-size: 0.95rem;
+    }
 }
 
 /* Animations */
 @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* Mobile Responsiveness for Hero */
@@ -402,6 +515,7 @@ body {
         padding-top: 4rem;
         padding-bottom: 2rem;
     }
+
     .hero-content {
         align-items: center;
         text-align: center;
@@ -411,11 +525,13 @@ body {
         backdrop-filter: blur(10px);
         border-radius: 20px;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
+
     .hero-main-title {
         font-size: 3.2rem;
     }
+
     .image-frame-arch {
         height: 400px;
         width: 90vw;
