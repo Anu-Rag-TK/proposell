@@ -14,8 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
         bgMusic.play().then(() => {
             musicPlaying = true;
             setMusicUI(true);
-        }).catch(() => { /* autoplay blocked — user must press button */ });
+        }).catch((err) => {
+            console.log("Autoplay blocked, waiting for interaction:", err);
+            musicStarted = false; // Reset to allow fallback via interaction
+        });
     };
+
+    // Attempt immediate playback
+    startMusic();
 
     const setMusicUI = (playing) => {
         if (!musicToggle) return;
