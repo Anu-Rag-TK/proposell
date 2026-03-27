@@ -5,23 +5,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicIcon    = musicToggle ? musicToggle.querySelector('.music-icon')  : null;
     const musicLabel   = musicToggle ? musicToggle.querySelector('.music-label') : null;
     let   musicStarted = false;
-    let   musicPlaying = false;
 
-    const startMusic = () => {
-        if (musicStarted) return;
-        musicStarted = true;
-        bgMusic.volume = 0.35;
-        bgMusic.play().then(() => {
-            musicPlaying = true;
-            setMusicUI(true);
-        }).catch((err) => {
-            console.log("Autoplay blocked, waiting for interaction:", err);
-            musicStarted = false; // Reset to allow fallback via interaction
-        });
+    const toggleMusic = (forcePlay) => {
+        if (!bgMusic) return;
+
+        const shouldPlay = typeof forcePlay === 'boolean' ? forcePlay : bgMusic.paused;
+
+        if (shouldPlay) {
+            bgMusic.volume = 0.35;
+            bgMusic.play().then(() => {
+                musicStarted = true;
+                setMusicUI(true);
+            }).catch(err => {
+                console.log("Playback failed:", err);
+                setMusicUI(false);
+            });
+        } else {
+            bgMusic.pause();
+            setMusicUI(false);
+        }
     };
-
-    // Attempt immediate playback
-    startMusic();
 
     const setMusicUI = (playing) => {
         if (!musicToggle) return;
@@ -37,34 +40,38 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (musicToggle) {
-        musicToggle.addEventListener('click', () => {
-            if (!musicStarted) {
-                startMusic();
-                return;
-            }
-            if (musicPlaying) {
-                bgMusic.pause();
-                musicPlaying = false;
-                setMusicUI(false);
-            } else {
-                bgMusic.play();
-                musicPlaying = true;
-                setMusicUI(true);
-            }
+        musicToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMusic();
         });
     }
 
-    // Auto-start on first interaction anywhere on the page
-    const onFirstInteraction = () => {
-        startMusic();
-        document.removeEventListener('click',     onFirstInteraction);
-        document.removeEventListener('touchstart', onFirstInteraction);
-        document.removeEventListener('keydown',    onFirstInteraction);
+    // Auto-start attempt
+    const attemptAutoplay = () => {
+        if (!bgMusic) return;
+        bgMusic.play().then(() => {
+            musicStarted = true;
+            setMusicUI(true);
+        }).catch(() => {
+            setMusicUI(false);
+        });
     };
-    document.addEventListener('click',     onFirstInteraction);
-    document.addEventListener('touchstart', onFirstInteraction);
-    document.addEventListener('keydown',    onFirstInteraction);
+    attemptAutoplay();
+
+    // Reliable fallback on any first interaction
+    const handleFirstInteraction = () => {
+        if (!musicStarted) {
+            toggleMusic(true);
+        }
+        document.removeEventListener('click',      handleFirstInteraction);
+        document.removeEventListener('touchstart', handleFirstInteraction);
+        document.removeEventListener('keydown',     handleFirstInteraction);
+    };
+    document.addEventListener('click',      handleFirstInteraction);
+    document.addEventListener('touchstart', handleFirstInteraction);
+    document.addEventListener('keydown',     handleFirstInteraction);
     // ─────────────────────────────────────────
+
     const yesBtn = document.getElementById('yes-btn');
     const noBtn = document.getElementById('no-btn');
     const content = document.getElementById('content');
@@ -83,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollContainer = document.getElementById('scroll-container');
 
     const openScroll = () => {
+        toggleMusic(true); // 🎵 Play music when she opens the scroll!
         scrollModal.classList.remove('hidden');
         sendDiscordNotification("📜 She opened the scroll and is reading your letter! 💌");
         // Re-trigger animation
@@ -91,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollContainer.style.animation = 'scrollUnroll 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards';
         });
     };
+
 
     const closeScroll = () => {
         scrollModal.classList.add('hidden');
