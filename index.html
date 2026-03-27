@@ -20,19 +20,71 @@
     <!-- Modern Hero Section -->
     <section id="hero" class="hero-section modern-hero">
         <div class="hero-content">
-            <h1 class="hero-main-title">Hey… I made something for you ❤️</h1>
+            <h1 class="hero-main-title">Hey… I made something for you ashyy!!!❤️</h1>
             <!--class="hero-subtitle" -->
             <a href="#proposal" class="hero-link">
                 <!--<button id="open-btn" class="btn elegant-btn">💌 Open My Heart</button> -->
             </a>
         </div>
         <div class="hero-image-wrapper">
-            <div class="image-frame-arch">
-                <!-- Pointing to the image inside the images directory -->
-                <img src="./images/my-image.png" alt="Us" id="hero-couple-img">
+            <div class="scroll-preview" id="scroll-trigger">
+                <div class="scroll-roll top-roll"></div>
+                <div class="scroll-body-preview">
+                    <span class="scroll-preview-icon">💌</span>
+                    <p class="scroll-preview-hint">A letter for you...</p>
+                </div>
+                <div class="scroll-roll bottom-roll"></div>
+                <button class="open-scroll-btn" id="open-scroll-btn">✨ Click to Open Scroll</button>
             </div>
         </div>
     </section>
+
+    <!-- Romantic Scroll Modal -->
+    <div id="scroll-modal" class="scroll-modal hidden">
+        <div class="scroll-modal-backdrop" id="scroll-backdrop"></div>
+        <div class="scroll-container" id="scroll-container">
+            <div class="scroll-top-rod"></div>
+            <div class="scroll-parchment">
+                <div class="scroll-inner-content">
+                    <div class="scroll-ornament">❧</div>
+                    <h2 class="scroll-heading">💌 A Letter From My Heart</h2>
+                    <div class="scroll-divider">✦ ✦ ✦</div>
+                    <p class="scroll-text">
+                        <b>Please Read it completely.</b>
+                    </p>
+                    <p class="scroll-text">
+                        നീ എന്നെ ഒരിക്കൽ ഇഷ്ടപ്പെട്ടു, പിന്നീട് ഇഷ്ടമല്ല എന്ന് പറഞ്ഞു, അത് കൊണ്ട് നീ ഇനിയും എന്നെ
+                        ഇഷ്ടപ്പെടില്ല എന്ന് പറയാൻ പറ്റില്ലല്ലോ.
+                    </p>
+                    <p class="scroll-text">
+                        ഇനിയും ദിവസങ്ങളും മാസങ്ങളും കൊല്ലങ്ങളും ഉണ്ടല്ലോ — നിന്റെ മനസ്സ് മാറാൻ chance ഉണ്ട് എന്ന് ഞാൻ
+                        കരുതുന്നു. നമ്മളൊക്കെ മനുഷ്യർ അല്ലെ.
+                    </p>
+                    <p class="scroll-text">
+                        എനിക്ക് കുറച്ച് time താ — നീ ഇഷ്ടപ്പെടുന്ന ഒരാളായി ഞാൻ മാറിയിരിക്കും. പെട്ടന്ന് ഒന്നും വേണ്ട —
+                        ഒരിക്കൽ നീ പെട്ടന്ന് yes പറഞ്ഞതാണ്.
+                    </p>
+                    <p class="scroll-text">
+                        ഞാൻ ഈ പറയുന്നതിനും നിന്റെ replay NO ആയിരിക്കാം — ചിലപ്പോൾ അല്ല, most probability NO ആയിരിക്കും.
+                        എങ്കിലും ഞാൻ ഇനിയും വരും proposal ഉം ആയിട്ട്.
+                    </p>
+                    <p class="scroll-text">
+                        നീ പറഞ്ഞ ഒരു കാര്യം ഉണ്ട് — <em>"Yes or No അത് പിന്നീടുള്ള കാര്യം അല്ലെ, propose ചെയ്യുന്നതിന്
+                            എന്തായിരുന്നു അതിന് പേടിക്കേണ്ട കാര്യം ഒന്നും ഇല്ല എന്ന്."</em>
+                    </p>
+                    <p class="scroll-text">
+                        ഞാൻ അന്ന് നിന്നെ നല്ല രീതിക്ക് propose ചെയ്തിരുന്നില്ല — അത് കൊണ്ട് ഇന്ന് ഈ Website ഇലൂടെ
+                        Propose ചെയ്യുന്നു.
+                    </p>
+                    <p class="scroll-cta">💖 Explore my page 💖</p>
+                    <div class="scroll-divider">✦ ✦ ✦</div>
+                    <div class="scroll-ornament">❦</div>
+                </div>
+            </div>
+            <div class="scroll-bottom-rod"></div>
+            <button class="close-scroll-btn" id="close-scroll-btn">✕ Close</button>
+        </div>
+    </div>
 
     <!-- Proposal Section -->
     <section id="proposal" class="proposal-section">
@@ -58,7 +110,7 @@
                     <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Bears Kissing"
                         class="main-gif">
                 </div>
-                <h1 class="title success-title">love You Ashna! 🎉</h1>
+                <h1 class="title success-title">love You Ashyyy! 🎉</h1>
                 <p class="subtitle">You just made me the happiest person ever! ❤️</p>
                 <div class="heart-pulse-container">
                     <div class="pulse-heart"></div>
@@ -72,8 +124,11 @@
                         style="background: transparent; box-shadow: none; width: 200px; object-fit: contain;">
                 </div>
                 <h1 class="title crying-title">My heart is broken... 💔</h1>
-                <p class="subtitle">I'll make any changes for You <br>give me some time,I will Become a Good Man as you Like💖</p>
-                <button id="sorry-btn" class="btn yes-btn" style="margin-top: 1rem; padding: 1rem 2.5rem;">sorry I love You 💖</button>
+                <p class="subtitle">I'll make any changes for You please accept me...<br>give me some time,I will Become
+                    a Good Man as you Like💖</p>
+                </p>
+                <button id="sorry-btn" class="btn yes-btn" style="margin-top: 1rem; padding: 1rem 2.5rem;">sorry I love
+                    You 💖</button>
             </div>
         </div>
     </section>
