@@ -426,6 +426,19 @@ body {
     width: 100%;
     box-sizing: border-box;
 }
+.scroll-text1 {
+    font-size: 1.05rem;
+    color: red;
+    line-height: 1.9;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    background: rgba(255, 230, 180, 0.3);
+    border-left: 3px solid rgba(200, 150, 60, 0.5);
+    padding: 0.8rem 1.2rem;
+    border-radius: 0 8px 8px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
 
 
 .scroll-text em {
